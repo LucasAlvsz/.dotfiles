@@ -85,7 +85,7 @@ ZSH_WEB_SEARCH_ENGINES=(
     notion_driven https://bootcampra.notion.site/
 )
 
-zstyle ':completion:*' menu select 
+autoload -U compinit && compinit
 
 #------------------------------------------------------------------------------------------#
 
@@ -96,13 +96,12 @@ zstyle ':completion:*' menu select
 # Add wisely, as too many plugins slow down shell startup.
 
 #Plugins ---------------------------------------------------------------------------------#
-plugins=(git zsh-autosuggestions web-search dirhistory git zsh-z)
+plugins=(git zsh-autosuggestions web-search dirhistory git zsh-z fzf-tab copypath)
 
 
 source $ZSH/oh-my-zsh.sh
-source /home/lucax/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source /home/lucax/git-clones/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source /home/lucax/.oh-my-zsh/custom/plugins/zsh-z
-autoload -U compinit && compinit
 
 #------------------------------------------------------------------------------------------#
 
@@ -144,6 +143,8 @@ alias c="clear"
 
 #tmux
 alias ks="tmux kill-server"
+alias tnew="tmux new-session -s"
+alias tent="tmux attach-session -t"
 
 #configs
 alias czsh="notepad.exe ~/.dotfiles/.zshrc"
@@ -154,6 +155,7 @@ alias sbl="sublime"
 alias ds="discord"
 alias ex="explorer.exe ."
 alias ntpd="notepad.exe"
+alias gk="gitKraken"
 
 #sites
 alias gl="google"
@@ -164,7 +166,8 @@ alias myno="notion Driven-58c41f9a6b6d44a0a6aac5194bf09b82"
 alias drno="notion_driven Materiais-2451301afd0e48c8837fdc97cf1bc5b6"
 
 #zsh
-alias upzsh"exec zsh"
+alias upzsh='exec zsh'
+alias cppath="copypath"
 
 
 #VSCode alias
@@ -184,3 +187,4 @@ alias ps="npx prisma studio"
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+source /home/lucax/git-clones/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
