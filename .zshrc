@@ -13,6 +13,15 @@ fi
 # Variaveis ---------------------------------------------------------------#
 export ZSH="$HOME/.oh-my-zsh"
 export PATH="$PATH:/$HOME/bin"
+# set DISPLAY variable to the IP automatically assigned to WSL2
+export HOST_IP="$(ip route |awk '/^default/{print $3}')"
+export PULSE_SERVER="tcp:$HOST_IP"
+export DISPLAY="$(cat /etc/resolv.conf | grep nameserver | awk '{print $2; exit;}'):0.0"
+export OPEN_WEATHER_API_KEY="[382991e8826a3cce745e2d0268edcff8]"
+
+
+#Automatically start dbus
+sudo /etc/init.d/dbus start &> /dev/null
 
 #--------------------------------------------------------------------------#
 # Set name of the theme to load --- if set to "random", it will
@@ -159,6 +168,7 @@ alias gk="gitKraken"
 
 #sites
 alias gl="google"
+alias yt="youtube"
 alias gh="gitHub"
 alias mygh="gitHub LucasAlvsz"
 alias ghr='gitHub "LucasAlvsz/"$(basename $PWD)'
@@ -172,6 +182,7 @@ alias cppath="copypath"
 
 #VSCode alias
 alias dev="npm run dev"
+alias test="npm run test"
 alias pm="npx prisma migrate"
 alias pdb="npx prisma db"
 alias ps="npx prisma studio"
